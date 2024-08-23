@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const listaProdutos = document.getElementById('lista-produtos');
     const linkCarrinho = document.getElementById('link-carrinho');
-    const contagemCarrinho = document.getElementById('contagem-carrinho');
+    const contagemCarrinho = document.getElementById('contagem-carrinho'); // ID corrigido
     const cartModal = new bootstrap.Modal(document.getElementById('cart-modal'));
     const listaCarrinho = document.getElementById('itens-carrinho');
-    const totalCarrino = document.getElementById('total-carrinho');
+    const totalCarrinho = document.getElementById('total-carrinho'); // Variável corrigida
     const checkoutBtn = document.getElementById('checkout-btn');
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 productCard.className = 'col-md-4';
                 productCard.innerHTML = `
                     <div class="card">
-                        <div id="imagem" style={width: 200px; height: 250px;}>
+                        <div id="imagem" style="width: 200px; height: 250px;">
                             <img src="${product.image}" class="card-img-top" alt="${product.title}">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">${product.description}</p>
-                            <h3 class="card-text">$${product.price.toFixed(2)}</h3>
+                            <h3 class="card-text price">$${product.price.toFixed(2)}</h3> <!-- Adicionada a classe .price -->
                             <button class="btn btn-outline-success add-to-cart" data-id="${product.id}">Adicionar ao Carrinho +</button>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newProduct = {
                 id: productId,
                 title: event.target.parentElement.querySelector('.card-title').textContent,
-                price: parseFloat(event.target.parentElement.querySelector('.card-text').textContent.replace('$', '')),
+                price: parseFloat(event.target.parentElement.querySelector('.price').textContent.replace('$', '')), // Seleciona o preço corretamente
                 quantity: 1
             };
             cart.push(newProduct);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.quantity * item.price;
         });
 
-        totalCarrino.textContent = total.toFixed(2);
+        totalCarrinho.textContent = total.toFixed(2); // Variável corrigida
         cartModal.show();
     });
 
