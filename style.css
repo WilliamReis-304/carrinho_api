@@ -1,0 +1,24 @@
+.card {
+    margin-bottom: 20px;
+}
+
+body{
+    background-color: rgb(233, 233, 233);
+}
+
+nav{
+    background-color:yellow;
+    height:50px;
+}
+
+img {
+    width: 200px;
+    height: 250px;
+}
+
+#imagem{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
